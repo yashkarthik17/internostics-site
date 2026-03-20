@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Internostics is the technology company behind Blast Tax — affordable DIY tax resolution software for millions of Americans with IRS debt.">
+    <meta name="keywords" content="tax resolution, tax debt, IRS, Blast Tax, Internostics, delinquent taxes, OIC, installment agreement, penalty abatement, back taxes">
+    <meta name="author" content="Internostics, Inc.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Internostics — The Company Behind Blast Tax">
+    <meta property="og:description" content="Empowering Americans to resolve their tax debt. Internostics builds Blast Tax, the first DIY tax resolution software suite.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.internostics.com">
+    <title>Internostics | The Company Behind Blast Tax</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #FFFFFF;
+            --bg-subtle: #F8F9FC;
+            --bg-muted: #F1F3F9;
+            --text: #1A1A2E;
+            --text-secondary: #64648C;
+            --text-tertiary: #9D9DB8;
+            --border: #E8E8F0;
+            --border-light: #F0F0F6;
+            --primary: #7A1C2E;
+            --primary-light: #962A3F;
+            --primary-bg: #FEF2F4;
+            --primary-glow: rgba(122, 28, 46, 0.08);
+            --gold: #C4956A;
+            --gold-bg: #FDF8F3;
+            --accent-blue: #3B5BDB;
+            --accent-blue-bg: #EDF2FF;
+            --accent-green: #2B8A3E;
+            --accent-green-bg: #EBFBEE;
+            --serif: 'DM Serif Display', Georgia, serif;
+            --sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-xl: 0 24px 64px rgba(0,0,0,0.10), 0 8px 20px rgba(0,0,0,0.04);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--bg);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* ── Scroll progress ── */
+        #progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, var(--primary), var(--gold)); z-index: 200; }
+
+        /* ── Reveal ── */
+        .rv { opacity: 0; transform: translateY(36px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+        .rv.vis { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: 0.06s; } .d2 { transition-delay: 0.12s; } .d3 { transition-delay: 0.18s; }
+        .d4 { transition-delay: 0.24s; } .d5 { transition-delay: 0.3s; } .d6 { transition-delay: 0.36s; }
+        @media (prefers-reduced-motion: reduce) { .rv { opacity:1; transform:none; transition:none; } }
+
+        /* ── Layout ── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
+        .section { padding: clamp(4rem, 8vw, 7rem) 0; }
+        [id] { scroll-margin-top: 80px; }
+
+        /* ── Typography ── */
+        h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
+        .label {
+            font-family: var(--sans);
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.375rem 0.875rem;
+            border-radius: 100px;
+            line-height: 1;
+        }
+        .label-primary { background: var(--primary-bg); color: var(--primary); }
+        .label-gold { background: var(--gold-bg); color: var(--gold); }
+        .label-blue { background: var(--accent-blue-bg); color: var(--accent-blue); }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-family: var(--sans); font-size: 0.875rem; font-weight: 600;
+            text-decoration: none; border-radius: 100px; border: none; cursor: pointer;
+            transition: all 0.3s var(--ease); letter-spacing: 0.01em;
+        }
+        .btn i { font-size: 0.5rem; transition: transform 0.3s var(--ease); }
+        .btn:hover i { transform: translateX(3px); }
+        .btn-primary { padding: 0.875rem 1.75rem; background: var(--primary); color: #fff; }
+        .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(122,28,46,0.25); }
+        .btn-secondary { padding: 0.875rem 1.75rem; background: var(--bg); color: var(--text); border: 1.5px solid var(--border); }
+        .btn-secondary:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn-ghost { padding: 0.625rem 0; background: none; color: var(--primary); }
+        .btn-ghost:hover { gap: 0.75rem; }
+
+        /* ── Nav ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.4s, box-shadow 0.4s;
+        }
+        nav.scrolled { border-bottom-color: var(--border-light); box-shadow: var(--shadow-sm); }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+            display: flex; align-items: center; justify-content: space-between; height: 64px;
+        }
+        .logo { font-family: var(--sans); font-size: 0.875rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); text-decoration: none; }
+        .logo-dot { display: inline-block; width: 5px; height: 5px; background: var(--primary); border-radius: 50%; margin-left: 2px; vertical-align: super; }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-link { font-size: 0.8125rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.25s; }
+        .nav-link:hover { color: var(--text); }
+        .nav-cta { padding: 0.5rem 1.25rem; background: var(--text); color: #fff; font-size: 0.75rem; font-weight: 600; font-family: var(--sans); text-decoration: none; border-radius: 100px; transition: background 0.3s, transform 0.2s; }
+        .nav-cta:hover { background: var(--primary); transform: translateY(-1px); }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.25rem; color: var(--text); padding: 0.5rem; }
+        .mobile-menu { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .mobile-menu.open { opacity: 1; pointer-events: all; }
+        .mobile-menu a { font-family: var(--serif); font-size: 1.75rem; color: var(--text); text-decoration: none; }
+        @media (max-width: 1023px) { .nav-links { display: none; } .mobile-toggle { display: block; } .mobile-menu { display: flex; } }
+
+        /* ══════════════════════════════════════
+           HERO
+           ══════════════════════════════════════ */
+        .hero {
+            padding: clamp(7rem, 12vw, 10rem) 0 clamp(4rem, 8vw, 6rem);
+            position: relative;
+            overflow: hidden;
+        }
+        /* Gradient orbs */
+        .hero-orb {
+            position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px);
+        }
+        .hero-orb-1 { width: 500px; height: 500px; top: -10%; right: -5%; background: rgba(122,28,46,0.07); }
+        .hero-orb-2 { width: 400px; height: 400px; bottom: -15%; left: -8%; background: rgba(196,149,106,0.06); }
+        .hero-orb-3 { width: 300px; height: 300px; top: 20%; left: 40%; background: rgba(59,91,219,0.04); }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: clamp(2rem, 4vw, 4rem);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5.5vw, 4rem);
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+        }
+        .hero h1 em { font-style: italic; color: var(--primary); }
+        .hero-sub { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem; max-width: 480px; }
+        .hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem; }
+        .hero-stats { display: flex; gap: 2.5rem; }
+        .hero-stat-num { font-family: var(--serif); font-size: 1.75rem; color: var(--text); line-height: 1; }
+        .hero-stat-num .suffix { font-family: var(--sans); font-size: 0.75rem; font-weight: 700; color: var(--primary); vertical-align: super; }
+        .hero-stat-label { font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem; }
+
+        /* ── Product Mockup ── */
+        .mockup-frame {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            position: relative;
+        }
+        .mockup-chrome {
+            display: flex; align-items: center; gap: 0.375rem;
+            padding: 0.75rem 1rem;
+            background: var(--bg-subtle);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .mockup-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .mockup-dot-r { background: #FF6058; }
+        .mockup-dot-y { background: #FFBD2E; }
+        .mockup-dot-g { background: #28CA42; }
+        .mockup-url {
+            margin-left: 0.75rem; flex: 1; background: var(--bg); border-radius: 6px;
+            padding: 0.25rem 0.75rem; font-size: 0.6875rem; color: var(--text-tertiary);
+            border: 1px solid var(--border-light);
+        }
+        .mockup-body { padding: 1.5rem; min-height: 320px; }
+
+        /* Dashboard inside mockup */
+        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+        .dash-title { font-family: var(--sans); font-size: 0.9375rem; font-weight: 700; color: var(--text); }
+        .dash-badge { font-size: 0.625rem; font-weight: 700; padding: 0.25rem 0.625rem; border-radius: 100px; background: var(--accent-green-bg); color: var(--accent-green); }
+        .dash-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
+        .dash-card { background: var(--bg-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 1rem; }
+        .dash-card-label { font-size: 0.625rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 0.25rem; }
+        .dash-card-value { font-family: var(--serif); font-size: 1.375rem; color: var(--text); }
+        .dash-card-value .small { font-family: var(--sans); font-size: 0.625rem; font-weight: 600; }
+        .dash-progress-label { font-size: 0.6875rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 0.5rem; }
+        .dash-progress { background: var(--bg-muted); border-radius: 100px; height: 8px; overflow: hidden; margin-bottom: 0.375rem; }
+        .dash-progress-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--primary), var(--gold)); width: 72%; }
+        .dash-progress-text { font-size: 0.625rem; color: var(--text-tertiary); text-align: right; }
+        .dash-options { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+        .dash-option {
+            display: flex; align-items: center; gap: 0.625rem;
+            padding: 0.625rem 0.875rem; background: var(--bg-subtle); border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm); font-size: 0.75rem; color: var(--text);
+        }
+        .dash-option-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+        .dash-option-tag { margin-left: auto; font-size: 0.5625rem; font-weight: 700; padding: 0.125rem 0.5rem; border-radius: 100px; }
+
+        @media (max-width: 1023px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .mockup-frame { max-width: 560px; margin: 0 auto; }
+        }
+        @media (max-width: 640px) {
+            .hero-stats { flex-direction: column; gap: 1.25rem; }
+        }
+
+        /* ══════════════════════════════════════
+           LOGOS / PARTNERS STRIP
+           ══════════════════════════════════════ */
+        .logo-strip {
+            padding: clamp(2rem, 4vw, 3rem) 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            background: var(--bg-subtle);
+        }
+        .logo-strip p { text-align: center; font-size: 0.75rem; color: var(--text-tertiary); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.25rem; }
+        .logos-row { display: flex; justify-content: center; flex-wrap: wrap; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+        .partner-logo { font-family: var(--sans); font-weight: 800; font-size: 1.25rem; color: var(--text-tertiary); opacity: 0.5; transition: opacity 0.3s; letter-spacing: -0.02em; }
+        .partner-logo:hover { opacity: 0.8; }
+
+        /* ══════════════════════════════════════
+           PROBLEM / SOLUTION
+           ══════════════════════════════════════ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(2.5rem, 5vw, 5rem);
+            align-items: start;
+        }
+        .problem-items { display: flex; flex-direction: column; gap: 1.5rem; }
+        .problem-item { display: flex; gap: 1rem; align-items: flex-start; }
+        .problem-icon {
+            width: 40px; height: 40px; border-radius: var(--radius-sm);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; font-size: 0.875rem;
+        }
+        .problem-item h4 { font-family: var(--sans); font-size: 0.9375rem; font-weight: 600; margin-bottom: 0.125rem; }
+        .problem-item p { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.8; }
+
+        .solution-card {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: clamp(1.75rem, 3vw, 2.5rem);
+            position: relative;
+        }
+        .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1.5rem 0; }
+        .price-box {
+            text-align: center; padding: 1.25rem; background: var(--bg); border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+        }
+        .price-box .amount { font-family: var(--serif); font-size: clamp(1.75rem, 3vw, 2.25rem); line-height: 1; }
+        .price-box .cap { font-size: 0.6875rem; color: var(--text-tertiary); margin-top: 0.375rem; font-weight: 500; }
+        .proof-badge {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.875rem 1rem; background: var(--bg); border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+        .proof-badge .dot { width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .proof-badge .dot i { color: #fff; font-size: 0.5625rem; }
+        .proof-badge p { font-size: 0.8125rem; font-weight: 500; line-height: 1.5; }
+
+        @media (max-width: 1023px) { .about-grid { grid-template-columns: 1fr; } }
+
+        /* ══════════════════════════════════════
+           SECTION HEADERS
+           ══════════════════════════════════════ */
+        .sh { text-align: center; max-width: 540px; margin: 0 auto clamp(3rem, 5vw, 4rem); }
+        .sh .label { margin-bottom: 0.875rem; }
+        .sh h2 { font-size: clamp(1.875rem, 3.5vw, 2.5rem); line-height: 1.12; letter-spacing: -0.015em; margin-bottom: 0.875rem; }
+        .sh p { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; }
+
+        /* ══════════════════════════════════════
+           PRODUCTS
+           ══════════════════════════════════════ */
+        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        .p-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: clamp(1.5rem, 2.5vw, 2.25rem);
+            transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), border-color 0.3s;
+            position: relative;
+        }
+        .p-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+        .p-card-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.125rem; margin-bottom: 1.25rem; }
+        .p-card h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+        .p-card .sub { font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.875rem; }
+        .p-card .desc { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; }
+        .checks { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .chk { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; color: var(--text-secondary); }
+        .chk i { font-size: 0.6875rem; flex-shrink: 0; }
+        @media (max-width: 1023px) { .products-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr; } }
+
+        /* ══════════════════════════════════════
+           STEPS
+           ══════════════════════════════════════ */
+        .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
+        .steps-line { position: absolute; top: 36px; left: calc(12.5% + 36px); right: calc(12.5% + 36px); height: 2px; background: var(--border); z-index: 0; }
+        .steps-line-fill { height: 100%; width: 75%; background: linear-gradient(90deg, var(--primary), var(--gold)); border-radius: 2px; }
+        .step { text-align: center; position: relative; z-index: 1; }
+        .step-n {
+            width: 72px; height: 72px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--serif); font-size: 1.5rem; color: var(--text);
+            margin: 0 auto 1.25rem; background: var(--bg); border: 2px solid var(--border);
+            transition: border-color 0.3s, color 0.3s, background 0.3s;
+        }
+        .step:hover .step-n { border-color: var(--primary); color: var(--primary); }
+        .step-n.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .step h3 { font-size: 1.0625rem; margin-bottom: 0.375rem; }
+        .step p { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.8; }
+        @media (max-width: 1023px) { .steps-grid { grid-template-columns: 1fr 1fr; } .steps-line { display: none; } }
+        @media (max-width: 640px) { .steps-grid { grid-template-columns: 1fr; } }
+
+        /* ══════════════════════════════════════
+           MARKET / INVESTORS
+           ══════════════════════════════════════ */
+        .inv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 5vw, 5rem); align-items: center; }
+        .inv-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        .inv-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            transition: transform 0.4s var(--ease), box-shadow 0.4s;
+        }
+        .inv-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .inv-num { font-family: var(--serif); font-size: clamp(1.375rem, 2.5vw, 1.75rem); line-height: 1; color: var(--text); }
+        .inv-num .sfx { font-family: var(--sans); font-size: 0.5em; font-weight: 700; color: var(--primary); }
+        .inv-label { font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.25rem; }
+        .inv-card-full { grid-column: 1 / -1; text-align: center; padding: 1.5rem; background: linear-gradient(135deg, var(--primary-bg), var(--gold-bg)); border-color: transparent; }
+        .inv-card-full .inv-num { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+        .inv-card-full .above { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem; }
+        .inv-card-full .below { font-size: 0.6875rem; color: var(--text-tertiary); margin-top: 0.375rem; }
+        @media (max-width: 1023px) { .inv-grid { grid-template-columns: 1fr; } }
+
+        /* ══════════════════════════════════════
+           FEATURES
+           ══════════════════════════════════════ */
+        .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .feat {
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: var(--bg);
+            transition: transform 0.4s var(--ease), box-shadow 0.4s;
+        }
+        .feat:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .feat-ico { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 0.9375rem; }
+        .feat h3 { font-size: 1rem; margin-bottom: 0.375rem; }
+        .feat p { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.8; }
+        @media (max-width: 1023px) { .feat-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 640px) { .feat-grid { grid-template-columns: 1fr; } }
+
+        /* ══════════════════════════════════════
+           TEAM
+           ══════════════════════════════════════ */
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        .t-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            text-align: center;
+            transition: transform 0.4s var(--ease), box-shadow 0.4s;
+        }
+        .t-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .t-avatar {
+            width: 64px; height: 64px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--serif); font-size: 1.125rem;
+            margin: 0 auto 1rem;
+        }
+        .t-card h3 { font-family: var(--sans); font-size: 0.9375rem; font-weight: 600; margin-bottom: 0.125rem; }
+        .t-card .role { font-size: 0.75rem; color: var(--primary); font-weight: 600; margin-bottom: 0.625rem; }
+        .t-card .bio { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.75; }
+        @media (max-width: 1023px) { .team-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 640px) { .team-grid { grid-template-columns: 1fr; } }
+
+        /* ══════════════════════════════════════
+           PRESS
+           ══════════════════════════════════════ */
+        .press-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        .pr-card {
+            background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 1.75rem; transition: border-color 0.3s, transform 0.3s var(--ease);
+        }
+        .pr-card:hover { border-color: var(--primary); transform: translateY(-3px); }
+        .pr-meta { display: flex; align-items: center; gap: 0.375rem; font-size: 0.625rem; color: var(--text-tertiary); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
+        .pr-meta .badge { margin-left: auto; color: var(--gold); }
+        .pr-card h3 { font-size: 1rem; line-height: 1.35; margin-bottom: 0.5rem; }
+        .pr-card p { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.8; }
+        @media (max-width: 768px) { .press-grid { grid-template-columns: 1fr; } }
+
+        /* ══════════════════════════════════════
+           CTA
+           ══════════════════════════════════════ */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--gold-bg) 50%, var(--accent-blue-bg) 100%);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            text-align: center;
+        }
+        .cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin-bottom: 1rem; }
+        .cta-section h2 em { font-style: italic; color: var(--primary); }
+        .cta-section p { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; max-width: 520px; margin: 0 auto 2rem; }
+
+        /* ══════════════════════════════════════
+           FOOTER
+           ══════════════════════════════════════ */
+        footer {
+            background: var(--bg-subtle);
+            border-top: 1px solid var(--border);
+            padding: clamp(3rem, 5vw, 4.5rem) 0 2rem;
+            color: var(--text-secondary);
+        }
+        .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+        footer h4 { font-family: var(--sans); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin-bottom: 1rem; }
+        footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+        footer li a { font-size: 0.8125rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        footer li a:hover { color: var(--primary); }
+        .f-info p { font-size: 0.8125rem; line-height: 1.8; margin-bottom: 1rem; max-width: 260px; }
+        .f-contact { display: flex; flex-direction: column; gap: 0.375rem; font-size: 0.8125rem; }
+        .f-contact a { color: inherit; text-decoration: none; transition: color 0.2s; }
+        .f-contact a:hover { color: var(--primary); }
+        .f-contact i { color: var(--gold); font-size: 0.5625rem; margin-right: 0.375rem; }
+        .f-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+        .f-bottom p { font-size: 0.75rem; color: var(--text-tertiary); }
+        .socials { display: flex; gap: 0.375rem; }
+        .soc { width: 32px; height: 32px; border-radius: 50%; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: border-color 0.3s, background 0.3s; }
+        .soc:hover { border-color: var(--primary); background: var(--primary-bg); }
+        .soc i { font-size: 0.75rem; color: var(--text-tertiary); transition: color 0.3s; }
+        .soc:hover i { color: var(--primary); }
+        @media (max-width: 1023px) { .f-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 640px) { .f-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div id="progress"></div>
+
+    <!-- ══════ NAV ══════ -->
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="logo">Internostics<span class="logo-dot"></span></a>
+            <div class="nav-links">
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#leadership" class="nav-link">Leadership</a>
+                <a href="#investors" class="nav-link">Investors</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer" class="nav-cta">Visit BlastTax.com <i class="fas fa-arrow-right" style="font-size:0.5rem;margin-left:0.25rem;"></i></a>
+            </div>
+            <button class="mobile-toggle" id="mobBtn" aria-label="Menu"><i class="fas fa-bars" id="mobIcon"></i></button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobMenu">
+        <a href="#products" class="mob-link">Products</a>
+        <a href="#about" class="mob-link">About</a>
+        <a href="#leadership" class="mob-link">Leadership</a>
+        <a href="#investors" class="mob-link">Investors</a>
+        <a href="#contact" class="mob-link">Contact</a>
+        <a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer" class="mob-link" style="color:var(--primary);">BlastTax.com &rarr;</a>
+    </div>
+
+    <!-- ══════ HERO ══════ -->
+    <section class="hero">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="rv">
+                        <span class="label label-primary" style="margin-bottom:1.25rem;"><i class="fas fa-shield-halved" style="font-size:0.5rem;"></i> Tax Resolution Software</span>
+                    </div>
+                    <h1 class="rv d1">Resolve Your IRS Tax <em>Debt</em> for a Fraction of the Cost</h1>
+                    <p class="hero-sub rv d2">Blast Tax is the first affordable, DIY tax resolution software — built by licensed tax attorneys with 55+ years of combined experience.</p>
+                    <div class="hero-btns rv d3">
+                        <a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get Started for $299 <i class="fas fa-arrow-right"></i></a>
+                        <a href="#products" class="btn btn-secondary">See All Products <i class="fas fa-chevron-down"></i></a>
+                    </div>
+                    <div class="hero-stats rv d4">
+                        <div>
+                            <p class="hero-stat-num">$<span class="counter" data-target="688">0</span>B<span class="suffix">+</span></p>
+                            <p class="hero-stat-label">Unpaid IRS Debt</p>
+                        </div>
+                        <div>
+                            <p class="hero-stat-num"><span class="counter" data-target="10">0</span>M<span class="suffix">+</span></p>
+                            <p class="hero-stat-label">Delinquent Accounts</p>
+                        </div>
+                        <div>
+                            <p class="hero-stat-num"><span class="counter" data-target="18.6" data-decimal="true">0</span>M</p>
+                            <p class="hero-stat-label">Taxpayers Need Help</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Mockup -->
+                <div class="rv d3">
+                    <div class="mockup-frame">
+                        <div class="mockup-chrome">
+                            <div class="mockup-dot mockup-dot-r"></div>
+                            <div class="mockup-dot mockup-dot-y"></div>
+                            <div class="mockup-dot mockup-dot-g"></div>
+                            <div class="mockup-url">blasttax.com/dashboard</div>
+                        </div>
+                        <div class="mockup-body">
+                            <div class="dash-header">
+                                <span class="dash-title">Tax Resolution Dashboard</span>
+                                <span class="dash-badge"><i class="fas fa-circle" style="font-size:0.375rem;margin-right:0.25rem;"></i> Active</span>
+                            </div>
+                            <div class="dash-cards">
+                                <div class="dash-card">
+                                    <p class="dash-card-label">Total Debt</p>
+                                    <p class="dash-card-value">$24,800</p>
+                                </div>
+                                <div class="dash-card">
+                                    <p class="dash-card-label">Estimated Settlement</p>
+                                    <p class="dash-card-value" style="color:var(--accent-green);">$4,200</p>
+                                </div>
+                            </div>
+                            <p class="dash-progress-label">Resolution Progress</p>
+                            <div class="dash-progress"><div class="dash-progress-fill"></div></div>
+                            <p class="dash-progress-text">Step 3 of 4 complete</p>
+                            <div class="dash-options">
+                                <div class="dash-option">
+                                    <div class="dash-option-dot" style="background:var(--accent-green);"></div>
+                                    Offer in Compromise
+                                    <span class="dash-option-tag" style="background:var(--accent-green-bg);color:var(--accent-green);">Qualified</span>
+                                </div>
+                                <div class="dash-option">
+                                    <div class="dash-option-dot" style="background:var(--accent-blue);"></div>
+                                    Installment Agreement
+                                    <span class="dash-option-tag" style="background:var(--accent-blue-bg);color:var(--accent-blue);">Available</span>
+                                </div>
+                                <div class="dash-option">
+                                    <div class="dash-option-dot" style="background:var(--gold);"></div>
+                                    Penalty Abatement
+                                    <span class="dash-option-tag" style="background:var(--gold-bg);color:var(--gold);">Review</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ PARTNER STRIP ══════ -->
+    <div class="logo-strip">
+        <div class="container">
+            <p>Available at trusted retailers nationwide</p>
+            <div class="logos-row">
+                <span class="partner-logo" style="font-size:1.5rem;">amazon</span>
+                <span class="partner-logo" style="color:#5b9bd5;">Walmart</span>
+                <span class="partner-logo"><span style="color:#c5a100;">Best</span> Buy</span>
+                <span class="partner-logo" style="color:#c44;">Staples</span>
+                <span class="partner-logo"><span style="color:#4285f4;">G</span><span style="color:#ea4335;">o</span><span style="color:#fbbc05;">o</span><span style="color:#4285f4;">g</span><span style="color:#34a853;">l</span><span style="color:#ea4335;">e</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════ ABOUT ══════ -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="rv">
+                    <span class="label label-primary" style="margin-bottom:0.875rem;">The Problem</span>
+                    <h2 style="font-size:clamp(1.875rem, 3.5vw, 2.5rem);line-height:1.12;margin-bottom:1rem;letter-spacing:-0.015em;">Tax Resolution Is Broken</h2>
+                    <p style="font-size:1rem;color:var(--text-secondary);line-height:1.8;margin-bottom:2rem;">
+                        Millions of Americans owe the IRS money they can't pay. The industry that's supposed to help them is plagued by predatory firms, exorbitant fees, and broken promises.
+                    </p>
+                    <div class="problem-items">
+                        <div class="problem-item">
+                            <div class="problem-icon" style="background:var(--primary-bg);"><i class="fas fa-dollar-sign" style="color:var(--primary);"></i></div>
+                            <div>
+                                <h4>Unaffordable Professional Help</h4>
+                                <p>Tax resolution firms charge an average of <strong>$3,900+ per year</strong>. Quality representation is out of reach.</p>
+                            </div>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-icon" style="background:var(--primary-bg);"><i class="fas fa-phone-slash" style="color:var(--primary);"></i></div>
+                            <div>
+                                <h4>Predatory 800-Number Firms</h4>
+                                <p>Aggressive advertisers promise to settle debt for "pennies on the dollar" — then deliver little to no results.</p>
+                            </div>
+                        </div>
+                        <div class="problem-item">
+                            <div class="problem-icon" style="background:var(--primary-bg);"><i class="fas fa-scale-unbalanced" style="color:var(--primary);"></i></div>
+                            <div>
+                                <h4>A System Perceived as Unfair</h4>
+                                <p><strong>50% of Americans</strong> believe the tax system is unfair. People need tools, not more middlemen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rv d2">
+                    <div class="solution-card">
+                        <span class="label label-gold" style="margin-bottom:0.75rem;">The Solution</span>
+                        <h3 style="font-size:clamp(1.25rem, 2vw, 1.625rem);line-height:1.2;margin-bottom:0.625rem;">Affordable DIY Tax Resolution</h3>
+                        <p style="font-size:0.8125rem;color:var(--text-secondary);line-height:1.8;margin-bottom:1.25rem;">Blast Tax puts the power of tax resolution directly in your hands. No middleman. No $3,900 fees.</p>
+                        <div class="price-grid">
+                            <div class="price-box">
+                                <p class="amount" style="color:var(--primary);">$299</p>
+                                <p class="cap">Blast Tax</p>
+                            </div>
+                            <div class="price-box">
+                                <p class="amount" style="color:var(--text-tertiary);text-decoration:line-through;">$3,900+</p>
+                                <p class="cap">Traditional Firms</p>
+                            </div>
+                        </div>
+                        <div class="proof-badge">
+                            <div class="dot"><i class="fas fa-check"></i></div>
+                            <p>Built by licensed tax attorneys &amp; CPAs with 55+ years of combined experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ PRODUCTS ══════ -->
+    <section id="products" class="section" style="background:var(--bg-subtle);">
+        <div class="container">
+            <div class="sh rv">
+                <span class="label label-primary">Product Suite</span>
+                <h2>The Blast Tax Family of Products</h2>
+                <p>Three powerful tools to prepare delinquent returns, formulate resolutions, and submit directly to the IRS.</p>
+            </div>
+            <div class="products-grid">
+                <div class="p-card rv d1">
+                    <div class="p-card-icon" style="background:var(--primary-bg);"><i class="fas fa-user-shield" style="color:var(--primary);"></i></div>
+                    <h3>Blast Tax Individual</h3>
+                    <p class="sub" style="color:var(--primary);">Individual Tax Resolution</p>
+                    <p class="desc">DIY tax resolution for individual taxpayers. Settle your IRS debt on your own terms.</p>
+                    <div class="checks">
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--primary);"></i>Offer in Compromise (OIC)</div>
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--primary);"></i>Installment Agreements</div>
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--primary);"></i>Penalty Abatement</div>
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--primary);"></i>Currently Not Collectible</div>
+                    </div>
+                    <a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="p-card rv d2">
+                    <div class="p-card-icon" style="background:var(--gold-bg);"><i class="fas fa-building" style="color:var(--gold);"></i></div>
+                    <h3>Blast Tax Business</h3>
+                    <p class="sub" style="color:var(--gold);">Business Tax Resolution</p>
+                    <p class="desc">Resolve business tax issues. Designed for small and mid-size businesses facing IRS collections.</p>
+                    <div class="checks">
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--gold);"></i>Trust Fund Penalty Resolution</div>
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--gold);"></i>Business Installment Agreements</div>
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--gold);"></i>Payroll Tax Issue Resolution</div>
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--gold);"></i>Business Penalty Abatement</div>
+                    </div>
+                    <a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="color:var(--gold);">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="p-card rv d3">
+                    <div class="p-card-icon" style="background:var(--accent-blue-bg);"><i class="fas fa-file-invoice" style="color:var(--accent-blue);"></i></div>
+                    <h3>Blast Tax Prep</h3>
+                    <p class="sub" style="color:var(--accent-blue);">Delinquent Return Preparation</p>
+                    <p class="desc">File up to 10 years of unfiled tax returns. Required before the IRS will negotiate resolution.</p>
+                    <div class="checks">
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--accent-blue);"></i>Up to 10 years of back taxes</div>
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--accent-blue);"></i>Step-by-step guided prep</div>
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--accent-blue);"></i>Get current before resolving</div>
+                        <div class="chk"><i class="fas fa-check-circle" style="color:var(--accent-blue);"></i>Individual &amp; business returns</div>
+                    </div>
+                    <a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="color:var(--accent-blue);">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ HOW IT WORKS ══════ -->
+    <section class="section">
+        <div class="container">
+            <div class="sh rv">
+                <span class="label label-gold">How It Works</span>
+                <h2>Four Simple Steps to Tax Relief</h2>
+                <p>Blast Tax turns a complex, expensive process into something anyone can do from home.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="steps-line"><div class="steps-line-fill"></div></div>
+                <div class="step rv d1">
+                    <div class="step-n">1</div>
+                    <h3>Subscribe or Purchase</h3>
+                    <p>Get Blast Tax at BlastTax.com or through our retail partners including Amazon, Walmart, Best Buy, and Staples.</p>
+                </div>
+                <div class="step rv d2">
+                    <div class="step-n">2</div>
+                    <h3>Answer Questions</h3>
+                    <p>Tell us about your tax situation through a simple questionnaire. No tax knowledge required.</p>
+                </div>
+                <div class="step rv d3">
+                    <div class="step-n">3</div>
+                    <h3>Get Your Options</h3>
+                    <p>The software identifies which IRS programs you qualify for — OIC, installment, penalty abatement, or CNC.</p>
+                </div>
+                <div class="step rv d4">
+                    <div class="step-n active">4</div>
+                    <h3>Submit to the IRS</h3>
+                    <p>Review your forms, make any adjustments, and submit your resolution package directly to the IRS.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ INVESTORS ══════ -->
+    <section id="investors" class="section" style="background:var(--bg-subtle);">
+        <div class="container">
+            <div class="inv-grid">
+                <div class="rv">
+                    <span class="label label-gold" style="margin-bottom:0.875rem;">Market Opportunity</span>
+                    <h2 style="font-size:clamp(1.875rem, 3.5vw, 2.5rem);line-height:1.12;margin-bottom:1rem;">A Massive, Underserved Market</h2>
+                    <p style="font-size:1rem;color:var(--text-secondary);line-height:1.8;margin-bottom:2rem;">
+                        The tax resolution industry is ripe for disruption. With over 10 million delinquent accounts and $688 billion in unpaid debt, Blast Tax is the first direct-to-consumer product of its kind.
+                    </p>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+                        <a href="mailto:investors@internostics.com" class="btn btn-primary"><i class="fas fa-envelope" style="font-size:0.5rem;transform:none;"></i> Investor Inquiries</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                    </div>
+                </div>
+                <div class="rv d2">
+                    <div class="inv-cards">
+                        <div class="inv-card"><p class="inv-num">$20B<span class="sfx">+</span></p><p class="inv-label">Tax Management Market</p></div>
+                        <div class="inv-card"><p class="inv-num">$7.4B</p><p class="inv-label">N. American Tax Software</p></div>
+                        <div class="inv-card"><p class="inv-num">$17.6B</p><p class="inv-label">Consumer Tax Prep Industry</p></div>
+                        <div class="inv-card"><p class="inv-num">$43B</p><p class="inv-label">Projected by 2034</p></div>
+                        <div class="inv-card inv-card-full">
+                            <p class="above">Average debt per taxpayer</p>
+                            <p class="inv-num">$17,000</p>
+                            <p class="below">across 18.6M delinquent accounts totaling $316B+</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ WHY INTERNOSTICS ══════ -->
+    <section class="section">
+        <div class="container">
+            <div class="sh rv">
+                <span class="label label-primary">Why Internostics</span>
+                <h2>What Sets Blast Tax Apart</h2>
+                <p>Affordable, transparent, and designed by tax professionals who know the system inside and out.</p>
+            </div>
+            <div class="feat-grid">
+                <div class="feat rv d1">
+                    <div class="feat-ico" style="background:var(--primary-bg);"><i class="fas fa-tag" style="color:var(--primary);"></i></div>
+                    <h3>$299 vs. $3,900+</h3>
+                    <p>A fraction of the cost of traditional firms, making professional-grade resolution accessible to every taxpayer.</p>
+                </div>
+                <div class="feat rv d2">
+                    <div class="feat-ico" style="background:var(--gold-bg);"><i class="fas fa-hand-pointer" style="color:var(--gold);"></i></div>
+                    <h3>True DIY — No Middleman</h3>
+                    <p>You control the entire process. No handing off your case, no waiting on callbacks, no surprise fees.</p>
+                </div>
+                <div class="feat rv d3">
+                    <div class="feat-ico" style="background:var(--accent-blue-bg);"><i class="fas fa-store" style="color:var(--accent-blue);"></i></div>
+                    <h3>Major Retail Partners</h3>
+                    <p>Available on Amazon, Google, Walmart, Best Buy, and Staples — wherever you already shop.</p>
+                </div>
+                <div class="feat rv d1">
+                    <div class="feat-ico" style="background:var(--primary-bg);"><i class="fas fa-gavel" style="color:var(--primary);"></i></div>
+                    <h3>Built by Tax Professionals</h3>
+                    <p>Designed by licensed tax attorneys and CPAs with over 55 combined years of experience.</p>
+                </div>
+                <div class="feat rv d2">
+                    <div class="feat-ico" style="background:var(--gold-bg);"><i class="fas fa-cloud" style="color:var(--gold);"></i></div>
+                    <h3>Cloud-Based Access</h3>
+                    <p>Use Blast Tax from any device, anywhere. Progress saves automatically so you work at your own pace.</p>
+                </div>
+                <div class="feat rv d3">
+                    <div class="feat-ico" style="background:var(--accent-blue-bg);"><i class="fas fa-clock-rotate-left" style="color:var(--accent-blue);"></i></div>
+                    <h3>10 Years of Back Taxes</h3>
+                    <p>Blast Tax Prep lets you prepare up to 10 years of unfiled returns — often required before the IRS will negotiate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ TEAM ══════ -->
+    <section id="leadership" class="section" style="background:var(--bg-subtle);">
+        <div class="container">
+            <div class="sh rv">
+                <span class="label label-gold">Leadership</span>
+                <h2>Our Team</h2>
+                <p>Tax attorneys, CPAs, engineers, and operators united by one mission.</p>
+            </div>
+            <div class="team-grid">
+                <div class="t-card rv d1">
+                    <div class="t-avatar" style="background:var(--primary-bg);color:var(--primary);">JJ</div>
+                    <h3>James Jones</h3>
+                    <p class="role">Founder, CEO &amp; President</p>
+                    <p class="bio">Visionary founder driving Internostics' mission to democratize tax resolution for millions of underserved American taxpayers.</p>
+                </div>
+                <div class="t-card rv d2">
+                    <div class="t-avatar" style="background:var(--gold-bg);color:var(--gold);">VL</div>
+                    <h3>Victor Latham</h3>
+                    <p class="role">Senior Tax Attorney</p>
+                    <p class="bio">30 years of tax law experience. Shapes the legal framework and resolution methodologies in every Blast Tax product.</p>
+                </div>
+                <div class="t-card rv d3">
+                    <div class="t-avatar" style="background:var(--accent-blue-bg);color:var(--accent-blue);">EK</div>
+                    <h3>Edward Korducki</h3>
+                    <p class="role">Tax Attorney &amp; CPA</p>
+                    <p class="bio">25+ years as both a tax attorney and CPA. Dual expertise in tax law and accounting ensures accuracy across all products.</p>
+                </div>
+                <div class="t-card rv d1">
+                    <div class="t-avatar" style="background:var(--primary-bg);color:var(--primary);">YK</div>
+                    <h3>Yash Karthik</h3>
+                    <p class="role">CEO / CTO</p>
+                    <p class="bio">Defense aerospace background with 5 years in tax resolution. Specializes in automation and IT infrastructure, leading product engineering.</p>
+                </div>
+                <div class="t-card rv d2">
+                    <div class="t-avatar" style="background:var(--gold-bg);color:var(--gold);">SM</div>
+                    <h3>Stephanie Miyamoto</h3>
+                    <p class="role">Executive Assistant</p>
+                    <p class="bio">Manages executive operations and ensures seamless coordination across all departments and initiatives.</p>
+                </div>
+                <div class="t-card rv d3">
+                    <div class="t-avatar" style="background:var(--accent-blue-bg);color:var(--accent-blue);">DL</div>
+                    <h3>Destinie Lanford</h3>
+                    <p class="role">Customer Service</p>
+                    <p class="bio">8+ years of customer service experience. Ensures every user receives responsive, knowledgeable support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ PRESS ══════ -->
+    <section class="section">
+        <div class="container">
+            <div class="sh rv">
+                <span class="label label-gold">Press</span>
+                <h2>In The News</h2>
+                <p>The latest coverage and announcements from Internostics and Blast Tax.</p>
+            </div>
+            <div class="press-grid">
+                <div class="pr-card rv d1">
+                    <div class="pr-meta"><i class="far fa-newspaper" style="font-size:0.5rem;"></i> Press Release <span class="badge">Coming Soon</span></div>
+                    <h3>Internostics Announces Launch of Blast Tax Platform</h3>
+                    <p>First-of-its-kind DIY tax resolution software debuts for American taxpayers with IRS debt.</p>
+                </div>
+                <div class="pr-card rv d2">
+                    <div class="pr-meta"><i class="far fa-newspaper" style="font-size:0.5rem;"></i> Industry <span class="badge">Coming Soon</span></div>
+                    <h3>The $688B Problem: How Software Could Transform Tax Resolution</h3>
+                    <p>How Internostics is bringing the software-first model to an industry stuck in the past.</p>
+                </div>
+                <div class="pr-card rv d3">
+                    <div class="pr-meta"><i class="far fa-newspaper" style="font-size:0.5rem;"></i> Retail <span class="badge">Coming Soon</span></div>
+                    <h3>Blast Tax Secures Distribution Across Major National Retailers</h3>
+                    <p>Amazon, Walmart, Best Buy, Staples, and Google to carry Blast Tax software products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ CTA ══════ -->
+    <section class="section cta-section">
+        <div class="container rv">
+            <h2>Ready to Resolve Your Tax <em>Debt?</em></h2>
+            <p>Join the thousands of Americans taking control of their IRS debt. Starting at just $299.</p>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;">
+                <a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding:1rem 2.25rem;">Go to BlastTax.com <i class="fas fa-arrow-right"></i></a>
+                <a href="tel:949-539-4371" class="btn btn-secondary" style="padding:1rem 2.25rem;"><i class="fas fa-phone" style="font-size:0.5rem;transform:none;"></i> 949-539-4371</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════ FOOTER ══════ -->
+    <footer id="contact">
+        <div class="container">
+            <div class="f-grid">
+                <div class="f-info">
+                    <a href="#" class="logo" style="display:inline-block;margin-bottom:1rem;">Internostics<span class="logo-dot"></span></a>
+                    <p>The technology company behind Blast Tax — affordable DIY tax resolution software for American taxpayers.</p>
+                    <div class="f-contact">
+                        <span><i class="fas fa-map-marker-alt"></i>555 Anton Blvd, Costa Mesa, CA 92626</span>
+                        <a href="tel:949-539-4371"><i class="fas fa-phone"></i>949-539-4371</a>
+                        <a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i>www.BlastTax.com</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer">Blast Tax Individual</a></li>
+                        <li><a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer">Blast Tax Business</a></li>
+                        <li><a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer">Blast Tax Prep</a></li>
+                        <li><a href="https://www.blasttax.com" target="_blank" rel="noopener noreferrer">Pricing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Internostics</a></li>
+                        <li><a href="#leadership">Leadership</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Investors &amp; Legal</h4>
+                    <ul>
+                        <li><a href="#investors">Investor Relations</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Affiliate Program</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="f-bottom">
+                <p>&copy; 2026 Internostics, Inc. All rights reserved. Blast Tax is a registered product of Internostics, Inc.</p>
+                <div class="socials">
+                    <a href="#" class="soc" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="soc" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="soc" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="soc" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function(){
+        'use strict';
+
+        // Scroll progress
+        var prog = document.getElementById('progress');
+        function updateProg() {
+            var s = window.scrollY, h = document.documentElement.scrollHeight - window.innerHeight;
+            prog.style.width = (s / h * 100) + '%';
+        }
+
+        // Nav
+        var nav = document.getElementById('nav');
+        function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 40); }
+
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) { requestAnimationFrame(function() { updateProg(); updateNav(); ticking = false; }); ticking = true; }
+        });
+
+        // Mobile menu
+        var mobBtn = document.getElementById('mobBtn'), mobMenu = document.getElementById('mobMenu'), mobIcon = document.getElementById('mobIcon'), open = false;
+        mobBtn.addEventListener('click', function() { open = !open; mobMenu.classList.toggle('open', open); mobIcon.className = open ? 'fas fa-times' : 'fas fa-bars'; });
+        document.querySelectorAll('.mob-link').forEach(function(l) { l.addEventListener('click', function() { open = false; mobMenu.classList.remove('open'); mobIcon.className = 'fas fa-bars'; }); });
+
+        // Scroll reveal
+        var rvs = document.querySelectorAll('.rv');
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+        }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+        rvs.forEach(function(el) { obs.observe(el); });
+
+        // Counters
+        function animCounter(el) {
+            var target = parseFloat(el.dataset.target), dec = el.dataset.decimal === 'true', dur = 2000, start = performance.now();
+            function ease(t) { return 1 - Math.pow(1 - t, 4); }
+            function tick(now) {
+                var p = Math.min((now - start) / dur, 1), v = ease(p) * target;
+                el.textContent = dec ? v.toFixed(1) : Math.round(v);
+                if (p < 1) requestAnimationFrame(tick);
+                else el.textContent = dec ? target.toFixed(1) : target;
+            }
+            requestAnimationFrame(tick);
+        }
+        var counters = document.querySelectorAll('.counter');
+        var cObs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { animCounter(e.target); cObs.unobserve(e.target); } });
+        }, { threshold: 0.5 });
+        counters.forEach(function(el) { cObs.observe(el); });
+
+        // Product card tilt
+        document.querySelectorAll('.p-card').forEach(function(card) {
+            card.addEventListener('mousemove', function(e) {
+                var r = card.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+                var rx = (y - r.height / 2) / r.height * -4, ry = (x - r.width / 2) / r.width * 4;
+                card.style.transform = 'translateY(-6px) perspective(600px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+            });
+            card.addEventListener('mouseleave', function() { card.style.transform = ''; });
+        });
+    })();
+    </script>
+</body>
+</html>
