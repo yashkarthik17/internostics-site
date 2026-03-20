@@ -120,8 +120,8 @@
             max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem);
             display: flex; align-items: center; justify-content: space-between; height: 64px;
         }
-        .logo { font-family: var(--sans); font-size: 0.875rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); text-decoration: none; }
-        .logo-dot { display: inline-block; width: 5px; height: 5px; background: var(--primary); border-radius: 50%; margin-left: 2px; vertical-align: super; }
+        .logo { display: inline-flex; align-items: center; text-decoration: none; }
+        .logo img { height: 28px; width: auto; }
         .nav-links { display: flex; align-items: center; gap: 2rem; }
         .nav-link { font-size: 0.8125rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.25s; }
         .nav-link:hover { color: var(--text); }
@@ -467,7 +467,7 @@
     <!-- ══════ NAV ══════ -->
     <nav id="nav">
         <div class="nav-inner">
-            <a href="#" class="logo">Internostics<span class="logo-dot"></span></a>
+            <a href="#" class="logo"><img src="internostic.png" alt="Internostics"></a>
             <div class="nav-links">
                 <a href="#products" class="nav-link">Products</a>
                 <a href="#about" class="nav-link">About</a>
@@ -901,7 +901,7 @@
         <div class="container">
             <div class="f-grid">
                 <div class="f-info">
-                    <a href="#" class="logo" style="display:inline-block;margin-bottom:1rem;">Internostics<span class="logo-dot"></span></a>
+                    <a href="#" class="logo" style="display:inline-block;margin-bottom:1rem;"><img src="internostic.png" alt="Internostics"></a>
                     <p>The technology company behind Blast Tax — affordable DIY tax resolution software for American taxpayers.</p>
                     <div class="f-contact">
                         <span><i class="fas fa-map-marker-alt"></i>555 Anton Blvd, Costa Mesa, CA 92626</span>
